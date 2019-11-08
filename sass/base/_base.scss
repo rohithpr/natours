@@ -1,0 +1,16 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // This has been placed in base instead of typography because it defines 1rem
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
