@@ -13,6 +13,7 @@
     border-radius: 50%;
     z-index: 2000;
     box-shadow: 0 1rem 3rem rgba($color-black, .1);
+    cursor: pointer;
   }
 
   &__background {
@@ -24,8 +25,9 @@
     right: 6.5rem;
     background-image: radial-gradient($color-primary-light, $color-primary-dark);
     z-index: 1000;
+    transition: all .8s;
     // transition: all .8s cubic-bezier(0.86, 0, 0.07, 1);
-    transition: all .8s cubic-bezier(0, 1.54, 1, .45);
+    // transition: all .8s cubic-bezier(0, 1.54, 1, .45);
     // transition: all .8s cubic-bezier(0, 1.54, 1, -.67);
   }
 
@@ -88,5 +90,48 @@
   &__checkbox:checked ~ &__nav {
     width: 100vw;
     opacity: 1;
+  }
+
+  &__icon {
+    position: relative;
+
+    &,
+    &::before,
+    &::after {
+      @include centered;
+      width: 3rem;
+      height: .2rem;
+      background-color: $color-grey-dark-2;
+      display: inline-block;
+      position: absolute;
+      transition: all .2s;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+    }
+    &::before { top: -1rem }
+    &::after { top: 1rem }
+  }
+
+  &__button:hover &__icon {
+    &::before { top: -1.2rem }
+    &::after { top: 1.2rem }
+  }
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+    margin-left: -20%;
+
+    &::before {
+      top: 0;
+      transform: rotate(135deg);
+    }
+
+    &::after {
+      top: 0;
+      transform: rotate(-135deg);
+    }
   }
 }
